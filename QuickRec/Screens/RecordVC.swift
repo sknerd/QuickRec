@@ -115,7 +115,7 @@ class RecordVC: UIViewController {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-    
+            
             recordButton.isEnabled = false
             stopButton.isEnabled = true
             recordButton.setTitle("Recording...", for: .normal)
@@ -124,6 +124,7 @@ class RecordVC: UIViewController {
             recordButton.layer.borderWidth = 1
             
             UIView.animate(withDuration: 0.5) {
+                self.view.backgroundColor = .systemRed
                 self.recordButton.backgroundColor = .white
                 self.stopButton.alpha = 1
                 self.stopButton.setTitleColor(.white, for: .normal)
@@ -144,6 +145,12 @@ class RecordVC: UIViewController {
             recordButton.setTitle("Record", for: .normal)
             recordButton.setTitleColor(.white, for: .normal)
             recordButton.backgroundColor = .systemRed
+            
+            if let tabItems = tabBarController?.tabBar.items {
+                let tabItem = tabItems[1]
+                tabItem.badgeValue = "New"
+            }
+            
         } else {
             recordButton.setTitle("Record", for: .normal)
             recordButton.backgroundColor = .systemRed
@@ -166,6 +173,12 @@ class RecordVC: UIViewController {
             finishRecording(success: true)
             
             UIView.animate(withDuration: 0.5, animations: {
+                
+                if #available(iOS 13.0, *) {
+                    self.view.backgroundColor = .systemBackground
+                } else {
+                    self.view.backgroundColor = .white
+                }
                     self.stopButton.alpha = 0.3
                     self.stopButton.setTitle("Saved!", for: .normal)
                     self.stopButton.setTitleColor(.systemGray, for: .normal)

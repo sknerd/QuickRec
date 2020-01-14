@@ -30,6 +30,11 @@ class RecordingsVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadRecordings()
+        
+        if let tabItems = tabBarController?.tabBar.items {
+            let tabItem = tabItems[1]
+            tabItem.badgeValue = nil
+        }
     }
     
     // MARK: - Setup
@@ -70,7 +75,7 @@ class RecordingsVC: UITableViewController {
     fileprivate func play(url: URL) {
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.playAndRecord)
+            try session.setCategory(.playAndRecord, options: .defaultToSpeaker)
             try session.setActive(true)
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -85,8 +90,8 @@ class RecordingsVC: UITableViewController {
         }
         if let player = self.audioPlayer {
             player.delegate = self
-            player.prepareToPlay()
-            player.volume = 1.0
+//            player.prepareToPlay()
+//            player.volume = 1.0
             player.play()
         }
     }
