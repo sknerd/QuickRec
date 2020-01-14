@@ -11,25 +11,30 @@ import AVFoundation
 
 class RecordVC: UIViewController {
     
+    // MARK: - Properties
+    
     var recordButton: UIButton!
     var stopButton: UIButton!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioFilename: URL!
     
-    var numberOfRecordings: Int = 0
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
         configureRecordingSession()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(true, animated: true)
     }
+    
+    
+    // MARK: - Setup Methods
     
     fileprivate func configureViewController() {
         if #available(iOS 13.0, *) {
@@ -40,13 +45,10 @@ class RecordVC: UIViewController {
         }
     }
     
+    
     fileprivate func configureRecordingSession() {
         // Setting up recording session
         recordingSession = AVAudioSession.sharedInstance()
-        
-        if let number: Int = UserDefaults.standard.object(forKey: "myNumberOfRecordings") as? Int {
-            numberOfRecordings = number
-        }
         
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
@@ -74,13 +76,10 @@ class RecordVC: UIViewController {
         view.addSubview(recordButton)
         
         NSLayoutConstraint.activate([
-//            recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             recordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             recordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             recordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            recordButton.heightAnchor.constraint(equalToConstant: 50),
-//            recordButton.widthAnchor.constraint(equalToConstant: 200)
+            recordButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -90,6 +89,7 @@ class RecordVC: UIViewController {
         stopButton.addTarget(self, action: #selector(stopTapped), for: .touchUpInside)
         stopButton.isEnabled = false
         view.addSubview(stopButton)
+        stopButton.alpha = 0.1
         
         NSLayoutConstraint.activate([
             stopButton.topAnchor.constraint(equalTo: recordButton.bottomAnchor, constant: 20),
@@ -99,10 +99,11 @@ class RecordVC: UIViewController {
         ])
     }
     
+    // MARK: - Recording
     
     fileprivate func startRecording() {
         
-        audioFilename = getDocumentsDirectory().appendingPathComponent("recording\(numberOfRecordings).m4a")
+        audioFilename = self.createAudioFilePath()
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -116,8 +117,20 @@ class RecordVC: UIViewController {
             audioRecorder.delegate = self
             audioRecorder.record()
             
-            recordButton.setTitle("Tap to Stop", for: .normal)
-            recordButton.backgroundColor = .systemGray
+            recordButton.isEnabled = false
+            stopButton.isEnabled = true
+            recordButton.setTitle("Recording...", for: .normal)
+            recordButton.setTitleColor(.systemRed, for: .normal)
+            recordButton.layer.borderColor = UIColor.gray.cgColor
+            recordButton.layer.borderWidth = 1
+            
+            UIView.animate(withDuration: 0.5) {
+                self.recordButton.backgroundColor = .white
+                self.stopButton.alpha = 1
+                self.stopButton.setTitleColor(.white, for: .normal)
+                self.stopButton.setTitle("Stop and save", for: .normal)
+                self.stopButton.backgroundColor = .systemBlue
+            }
         } catch {
             finishRecording(success: false)
         }
@@ -129,8 +142,8 @@ class RecordVC: UIViewController {
         audioRecorder = nil
         
         if success {
-            UserDefaults.standard.set(numberOfRecordings, forKey: "myNumberOfRecordings")
             recordButton.setTitle("Record", for: .normal)
+            recordButton.setTitleColor(.white, for: .normal)
             recordButton.backgroundColor = .systemRed
         } else {
             recordButton.setTitle("Record", for: .normal)
@@ -139,29 +152,43 @@ class RecordVC: UIViewController {
         }
     }
     
+    // MARK: - Actions
     
-    @objc func recordTapped() {
-        // Checking if we have an active recorder
+    @objc fileprivate func recordTapped() {
         if audioRecorder == nil {
-            numberOfRecordings += 1
             startRecording()
         } else {
             finishRecording(success: true)
         }
     }
     
-    @objc func stopTapped() {
-        print("Stop")
+    @objc fileprivate func stopTapped() {
+        if audioRecorder != nil {
+            finishRecording(success: true)
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                    self.stopButton.alpha = 0.3
+                    self.stopButton.setTitle("Saved!", for: .normal)
+                    self.stopButton.setTitleColor(.systemGray, for: .normal)
+                    self.stopButton.backgroundColor = .white
+                    self.recordButton.isEnabled = true
+                    self.recordButton.layer.borderWidth = 0
+                })
+        }
     }
     
-    
-    // Getting the path to recordings directory
-    func getDocumentsDirectory() -> URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    // MARK: - File path
+    fileprivate func createAudioFilePath() -> URL? {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy.MM.dd_HH-mm-ss"
+        let currentFileName = "recording-\(format.string(from: Date()))" + ".m4a"
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documentDirectory.appendingPathComponent(currentFileName)
+        return url
     }
     
-    // Displaying alert
-    func displayAlert(title: String, message: String) {
+
+    fileprivate func displayAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
         present(alert, animated: true)

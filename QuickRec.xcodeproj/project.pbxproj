@@ -14,6 +14,8 @@
 		8135901023CDBB0E004EC988 /* QRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135900F23CDBB0E004EC988 /* QRButton.swift */; };
 		8155380F23CDD75000D1A207 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155380E23CDD75000D1A207 /* SceneDelegate.swift */; };
 		8155381123CDE0C100D1A207 /* RecordingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155381023CDE0C100D1A207 /* RecordingsVC.swift */; };
+		8155381523CE006700D1A207 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155381423CE006700D1A207 /* Int+Ext.swift */; };
+		8155381B23CE03BC00D1A207 /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155381A23CE03BC00D1A207 /* Recording.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		8135900F23CDBB0E004EC988 /* QRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRButton.swift; sourceTree = "<group>"; };
 		8155380E23CDD75000D1A207 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8155381023CDE0C100D1A207 /* RecordingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsVC.swift; sourceTree = "<group>"; };
+		8155381423CE006700D1A207 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		8155381A23CE03BC00D1A207 /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,48 @@
 			children = (
 				81358FFB23CDB5DA004EC988 /* AppDelegate.swift */,
 				8155380E23CDD75000D1A207 /* SceneDelegate.swift */,
-				81358FFF23CDB5DA004EC988 /* RecordVC.swift */,
-				8135900F23CDBB0E004EC988 /* QRButton.swift */,
-				8155381023CDE0C100D1A207 /* RecordingsVC.swift */,
+				8155381923CE039800D1A207 /* Models */,
+				8155381823CE036C00D1A207 /* Custom Views */,
+				8155381623CE030D00D1A207 /* Screens */,
+				8155381723CE033800D1A207 /* Extensions */,
 				8135900423CDB5DE004EC988 /* Assets.xcassets */,
 				8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */,
 				8135900923CDB5DE004EC988 /* Info.plist */,
 			);
 			path = QuickRec;
+			sourceTree = "<group>";
+		};
+		8155381623CE030D00D1A207 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				81358FFF23CDB5DA004EC988 /* RecordVC.swift */,
+				8155381023CDE0C100D1A207 /* RecordingsVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8155381723CE033800D1A207 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8155381423CE006700D1A207 /* Int+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8155381823CE036C00D1A207 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				8135900F23CDBB0E004EC988 /* QRButton.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		8155381923CE039800D1A207 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8155381A23CE03BC00D1A207 /* Recording.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +183,8 @@
 				8135901023CDBB0E004EC988 /* QRButton.swift in Sources */,
 				8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */,
 				81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */,
+				8155381523CE006700D1A207 /* Int+Ext.swift in Sources */,
+				8155381B23CE03BC00D1A207 /* Recording.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

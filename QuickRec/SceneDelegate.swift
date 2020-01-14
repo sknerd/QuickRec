@@ -29,8 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createRecordNC() -> UINavigationController {
         let recordVC = RecordVC()
         recordVC.title = "Record"
-        recordVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-        
+        recordVC.tabBarItem = UITabBarItem(title: "Record", image: UIImage(named: "record"), tag: 0)
         return UINavigationController(rootViewController: recordVC)
     }
     
@@ -38,8 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createRecordingsNC() -> UINavigationController {
         let recordingsVC = RecordingsVC()
         recordingsVC.title = "My Recordings"
-        recordingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        
+        recordingsVC.tabBarItem = UITabBarItem(title: "Listen", image: UIImage(named: "recordings"), tag: 1)
         return UINavigationController(rootViewController: recordingsVC)
     }
     
