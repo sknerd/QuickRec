@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createRecordingsNC() -> UINavigationController {
         let recordingsVC = RecordingsVC()
-        recordingsVC.title = "Recordings"
+        recordingsVC.title = "My Recordings"
         recordingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         
         return UINavigationController(rootViewController: recordingsVC)

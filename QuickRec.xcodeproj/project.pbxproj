@@ -12,8 +12,8 @@
 		8135900523CDB5DE004EC988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8135900423CDB5DE004EC988 /* Assets.xcassets */; };
 		8135900823CDB5DE004EC988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */; };
 		8135901023CDBB0E004EC988 /* QRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135900F23CDBB0E004EC988 /* QRButton.swift */; };
-		8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135901123CDC748004EC988 /* RecordingsVC.swift */; };
 		8155380F23CDD75000D1A207 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155380E23CDD75000D1A207 /* SceneDelegate.swift */; };
+		8155381123CDE0C100D1A207 /* RecordingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155381023CDE0C100D1A207 /* RecordingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +24,8 @@
 		8135900723CDB5DE004EC988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8135900923CDB5DE004EC988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8135900F23CDBB0E004EC988 /* QRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRButton.swift; sourceTree = "<group>"; };
-		8135901123CDC748004EC988 /* RecordingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsVC.swift; sourceTree = "<group>"; };
 		8155380E23CDD75000D1A207 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8155381023CDE0C100D1A207 /* RecordingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				81358FFB23CDB5DA004EC988 /* AppDelegate.swift */,
 				8155380E23CDD75000D1A207 /* SceneDelegate.swift */,
 				81358FFF23CDB5DA004EC988 /* RecordVC.swift */,
-				8135901123CDC748004EC988 /* RecordingsVC.swift */,
 				8135900F23CDBB0E004EC988 /* QRButton.swift */,
+				8155381023CDE0C100D1A207 /* RecordingsVC.swift */,
 				8135900423CDB5DE004EC988 /* Assets.xcassets */,
 				8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */,
 				8135900923CDB5DE004EC988 /* Info.plist */,
@@ -140,8 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8155381123CDE0C100D1A207 /* RecordingsVC.swift in Sources */,
 				8155380F23CDD75000D1A207 /* SceneDelegate.swift in Sources */,
-				8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */,
 				8135901023CDBB0E004EC988 /* QRButton.swift in Sources */,
 				8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */,
 				81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */,

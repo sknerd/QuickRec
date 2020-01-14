@@ -15,17 +15,29 @@ class RecordVC: UIViewController {
     var stopButton: UIButton!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    var audioFilename: URL!
     
     var numberOfRecordings: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
         configureRecordingSession()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
+    fileprivate func configureViewController() {
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+            navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            view.backgroundColor = .white
+        }
     }
     
     fileprivate func configureRecordingSession() {
@@ -90,7 +102,7 @@ class RecordVC: UIViewController {
     
     fileprivate func startRecording() {
         
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording\(numberOfRecordings).m4a")
+        audioFilename = getDocumentsDirectory().appendingPathComponent("recording\(numberOfRecordings).m4a")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -144,9 +156,8 @@ class RecordVC: UIViewController {
     
     
     // Getting the path to recordings directory
-    fileprivate func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+    func getDocumentsDirectory() -> URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
     // Displaying alert
