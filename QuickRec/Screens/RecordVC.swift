@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Accelerate
 
 class RecordVC: UIViewController {
     
@@ -47,7 +48,6 @@ class RecordVC: UIViewController {
     
     
     fileprivate func configureRecordingSession() {
-        // Setting up recording session
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
@@ -102,7 +102,6 @@ class RecordVC: UIViewController {
     // MARK: - Recording
     
     fileprivate func startRecording() {
-        
         audioFilename = self.createAudioFilePath()
         
         let settings = [
@@ -116,7 +115,7 @@ class RecordVC: UIViewController {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
-            
+    
             recordButton.isEnabled = false
             stopButton.isEnabled = true
             recordButton.setTitle("Recording...", for: .normal)
