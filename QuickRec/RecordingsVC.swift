@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordingsVC.swift
 //  QuickRec
 //
 //  Created by renks on 14.01.2020.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RecordingsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+        view.backgroundColor = .systemBlue
+    }
+    
 
 }
-

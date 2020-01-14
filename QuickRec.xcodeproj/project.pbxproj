@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFB23CDB5DA004EC988 /* AppDelegate.swift */; };
 		81358FFE23CDB5DA004EC988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */; };
-		8135900023CDB5DA004EC988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFF23CDB5DA004EC988 /* ViewController.swift */; };
-		8135900323CDB5DA004EC988 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8135900123CDB5DA004EC988 /* Main.storyboard */; };
+		8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFF23CDB5DA004EC988 /* RecordVC.swift */; };
 		8135900523CDB5DE004EC988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8135900423CDB5DE004EC988 /* Assets.xcassets */; };
 		8135900823CDB5DE004EC988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */; };
+		8135901023CDBB0E004EC988 /* QRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135900F23CDBB0E004EC988 /* QRButton.swift */; };
+		8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135901123CDC748004EC988 /* RecordingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		81358FF823CDB5DA004EC988 /* QuickRec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81358FFB23CDB5DA004EC988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		81358FFF23CDB5DA004EC988 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8135900223CDB5DA004EC988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81358FFF23CDB5DA004EC988 /* RecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		8135900423CDB5DE004EC988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8135900723CDB5DE004EC988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8135900923CDB5DE004EC988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8135900F23CDBB0E004EC988 /* QRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRButton.swift; sourceTree = "<group>"; };
+		8135901123CDC748004EC988 /* RecordingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				81358FFB23CDB5DA004EC988 /* AppDelegate.swift */,
 				81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */,
-				81358FFF23CDB5DA004EC988 /* ViewController.swift */,
-				8135900123CDB5DA004EC988 /* Main.storyboard */,
+				81358FFF23CDB5DA004EC988 /* RecordVC.swift */,
+				8135901123CDC748004EC988 /* RecordingsVC.swift */,
+				8135900F23CDBB0E004EC988 /* QRButton.swift */,
 				8135900423CDB5DE004EC988 /* Assets.xcassets */,
 				8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */,
 				8135900923CDB5DE004EC988 /* Info.plist */,
@@ -127,7 +130,6 @@
 			files = (
 				8135900823CDB5DE004EC988 /* LaunchScreen.storyboard in Resources */,
 				8135900523CDB5DE004EC988 /* Assets.xcassets in Resources */,
-				8135900323CDB5DA004EC988 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8135900023CDB5DA004EC988 /* ViewController.swift in Sources */,
+				8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */,
+				8135901023CDBB0E004EC988 /* QRButton.swift in Sources */,
+				8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */,
 				81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */,
 				81358FFE23CDB5DA004EC988 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8135900123CDB5DA004EC988 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8135900223CDB5DA004EC988 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,6 +283,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5W9FKJ4DL;
 				INFOPLIST_FILE = QuickRec/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sknerd.QuickRec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +302,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S5W9FKJ4DL;
 				INFOPLIST_FILE = QuickRec/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sknerd.QuickRec;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
