@@ -11,10 +11,48 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window : UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow()
+        window?.rootViewController = createTabbar()
+        window?.makeKeyAndVisible()
+        
+        configureNavigationBar()
+        
         return true
+    }
+    
+    func createRecordNC() -> UINavigationController {
+        let recordVC = RecordVC()
+        recordVC.title = "Record"
+        recordVC.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
+        
+        return UINavigationController(rootViewController: recordVC)
+    }
+    
+    
+    func createRecordingsNC() -> UINavigationController {
+        let recordingsVC = RecordingsVC()
+        recordingsVC.title = "Recordings"
+        recordingsVC.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+        
+        return UINavigationController(rootViewController: recordingsVC)
+    }
+    
+    
+    func createTabbar() -> UITabBarController {
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemRed
+        
+        tabbar.viewControllers = [createRecordNC(), createRecordingsNC()]
+        
+        return tabbar
+    }
+    
+    func configureNavigationBar() {
+        UINavigationBar.appearance().tintColor = .systemRed
     }
 
     // MARK: UISceneSession Lifecycle

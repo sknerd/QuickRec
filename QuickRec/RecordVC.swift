@@ -12,50 +12,83 @@ import AVFoundation
 class RecordVC: UIViewController {
     
     var recordButton: UIButton!
+    var stopButton: UIButton!
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     
-    var numberOfRecordings = 0
-
+    var numberOfRecordings: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureRecordingSession()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
+    fileprivate func configureRecordingSession() {
         // Setting up recording session
         recordingSession = AVAudioSession.sharedInstance()
+        
+        if let number: Int = UserDefaults.standard.object(forKey: "myNumberOfRecordings") as? Int {
+            numberOfRecordings = number
+        }
         
         do {
             try recordingSession.setCategory(.playAndRecord, mode: .default)
             try recordingSession.setActive(true)
-            recordingSession.requestRecordPermission() { [unowned self] allowed in
+            recordingSession.requestRecordPermission() { [weak self] allowed in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     if allowed {
-                        self.loadRecordingUI()
+                        self.configureRecordButton()
+                        self.configureStopButton()
                     } else {
-                        #warning("Add Alert")// failed to record!
+                        self.displayAlert(title: "Failed to record", message: "We can't use microphone without your permission")
                     }
                 }
             }
         } catch {
-            #warning("Add Alert")// failed to record!
+            displayAlert(title: "Whoops", message: "Failed to activate recording session")
         }
     }
     
     
-    func loadRecordingUI() {
-        recordButton = QRButton(backgroundColor: .systemRed, title: "Tap to Record")
+    fileprivate func configureRecordButton() {
+        recordButton = QRButton(backgroundColor: .systemRed, title: "Record")
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
         view.addSubview(recordButton)
         
         NSLayoutConstraint.activate([
-            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+//            recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            recordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             recordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             recordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            recordButton.heightAnchor.constraint(equalToConstant: 50)
+            recordButton.heightAnchor.constraint(equalToConstant: 50),
+//            recordButton.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     
     
-    func startRecording() {
+    fileprivate func configureStopButton() {
+        stopButton = QRButton(backgroundColor: .systemGray, title: "Stop")
+        stopButton.addTarget(self, action: #selector(stopTapped), for: .touchUpInside)
+        stopButton.isEnabled = false
+        view.addSubview(stopButton)
+        
+        NSLayoutConstraint.activate([
+            stopButton.topAnchor.constraint(equalTo: recordButton.bottomAnchor, constant: 20),
+            stopButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            stopButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            stopButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    
+    fileprivate func startRecording() {
         
         let audioFilename = getDocumentsDirectory().appendingPathComponent("recording\(numberOfRecordings).m4a")
         
@@ -79,15 +112,16 @@ class RecordVC: UIViewController {
     }
     
     
-    func finishRecording(success: Bool) {
+    fileprivate func finishRecording(success: Bool) {
         audioRecorder.stop()
         audioRecorder = nil
         
         if success {
-            recordButton.setTitle("Tap to Re-record", for: .normal)
+            UserDefaults.standard.set(numberOfRecordings, forKey: "myNumberOfRecordings")
+            recordButton.setTitle("Record", for: .normal)
             recordButton.backgroundColor = .systemRed
         } else {
-            recordButton.setTitle("Tap to Record", for: .normal)
+            recordButton.setTitle("Record", for: .normal)
             recordButton.backgroundColor = .systemRed
             displayAlert(title: "Ouch", message: "Recording failed")
         }
@@ -104,9 +138,13 @@ class RecordVC: UIViewController {
         }
     }
     
+    @objc func stopTapped() {
+        print("Stop")
+    }
+    
     
     // Getting the path to recordings directory
-    func getDocumentsDirectory() -> URL {
+    fileprivate func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }

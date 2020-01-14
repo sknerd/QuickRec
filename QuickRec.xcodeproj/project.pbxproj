@@ -8,24 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFB23CDB5DA004EC988 /* AppDelegate.swift */; };
-		81358FFE23CDB5DA004EC988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */; };
 		8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81358FFF23CDB5DA004EC988 /* RecordVC.swift */; };
 		8135900523CDB5DE004EC988 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8135900423CDB5DE004EC988 /* Assets.xcassets */; };
 		8135900823CDB5DE004EC988 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8135900623CDB5DE004EC988 /* LaunchScreen.storyboard */; };
 		8135901023CDBB0E004EC988 /* QRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135900F23CDBB0E004EC988 /* QRButton.swift */; };
 		8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8135901123CDC748004EC988 /* RecordingsVC.swift */; };
+		8155380F23CDD75000D1A207 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8155380E23CDD75000D1A207 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		81358FF823CDB5DA004EC988 /* QuickRec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickRec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81358FFB23CDB5DA004EC988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		81358FFF23CDB5DA004EC988 /* RecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVC.swift; sourceTree = "<group>"; };
 		8135900423CDB5DE004EC988 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8135900723CDB5DE004EC988 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8135900923CDB5DE004EC988 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8135900F23CDBB0E004EC988 /* QRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRButton.swift; sourceTree = "<group>"; };
 		8135901123CDC748004EC988 /* RecordingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsVC.swift; sourceTree = "<group>"; };
+		8155380E23CDD75000D1A207 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				81358FFB23CDB5DA004EC988 /* AppDelegate.swift */,
-				81358FFD23CDB5DA004EC988 /* SceneDelegate.swift */,
+				8155380E23CDD75000D1A207 /* SceneDelegate.swift */,
 				81358FFF23CDB5DA004EC988 /* RecordVC.swift */,
 				8135901123CDC748004EC988 /* RecordingsVC.swift */,
 				8135900F23CDBB0E004EC988 /* QRButton.swift */,
@@ -140,11 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8155380F23CDD75000D1A207 /* SceneDelegate.swift in Sources */,
 				8135901223CDC748004EC988 /* RecordingsVC.swift in Sources */,
 				8135901023CDBB0E004EC988 /* QRButton.swift in Sources */,
 				8135900023CDB5DA004EC988 /* RecordVC.swift in Sources */,
 				81358FFC23CDB5DA004EC988 /* AppDelegate.swift in Sources */,
-				81358FFE23CDB5DA004EC988 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
